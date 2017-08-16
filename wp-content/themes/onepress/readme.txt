@@ -1,13 +1,6 @@
 === OnePress ===
 
-Contributors: famethemes, congthien, kientrong
-Tags: one-column, two-columns, left-sidebar, right-sidebar, fluid-layout, responsive-layout, custom-menu, featured-images, full-width-template, sticky-post, theme-options, threaded-comments, translation-ready, blue, light
-Tested up to: 4.4.2
-Stable tag: 1.1.4
-License: GPLv2 or later
-License URI: http://www.gnu.org/licenses/gpl-2.0.html
-
-OnePress Theme, Copyright 2015 FameThemes
+OnePress Theme, Copyright 2017 FameThemes
 OnePress is distributed under the terms of the GNU GPL
 
 == Description ==
@@ -150,9 +143,26 @@ Source: https://github.com/twbs/bootstrap
 License: https://github.com/twbs/bootstrap/blob/master/LICENSE MIT LICENSE
 
 - jQuery Parallax
-Source: http://www.ianlunn.co.uk/plugins/jquery-parallax/
-License: Dual licensed under the MIT and GPL licenses: https://github.com/IanLunn/jQuery-Parallax#jquery-parallax
+Source: http://markdalgleish.com/projects/stellar.js/
+License: MIT license: http://markdalgleish.mit-license.org
 
 - FontAwesome
 Source: https://fortawesome.github.io/Font-Awesome/
 License: GPL - https://fortawesome.github.io/Font-Awesome/license/
+
+- Isotope
+Source: http://isotope.metafizzy.co
+License: Licensed GPLv3 for open source use.
+License: Isotope Commercial License for commercial use.
+
+- lightGallery
+Source: http://sachinchoolur.github.io/lightGallery/
+License: Apache 2.0
+
+- Justified Gallery
+Source: http://miromannino.github.io/Justified-Gallery/
+License: Licensed under the MIT license.
+
+- jQuery OwlCarousel
+Source: http://www.owlgraphic.com/owlcarousel/
+License: Licensed under MIT

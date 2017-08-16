@@ -21,7 +21,7 @@ if ( !$disable && !empty( $data ) ) {
             <?php if ($subtitle != '') echo '<h5 class="section-subtitle">' . esc_html($subtitle) . '</h5>'; ?>
             <?php if ($title != '') echo '<h2 class="section-title">' . esc_html($title) . '</h2>'; ?>
             <?php if ( $desc ) {
-                echo '<div class="section-desc">' . apply_filters( 'the_content', wp_kses_post( $desc ) ) . '</div>';
+                echo '<div class="section-desc">' . apply_filters( 'onepress_the_content', wp_kses_post( $desc ) ) . '</div>';
             } ?>
         </div>
         <?php } ?>
@@ -46,9 +46,6 @@ if ( !$disable && !empty( $data ) ) {
                     }
                 } else if ( $f['icon'] ) {
                     $f['icon'] = trim( $f['icon'] );
-                    if ($f['icon'] != '' && strpos($f['icon'], 'fa-') !== 0) {
-                        $f['icon'] = 'fa-' . $f['icon'];
-                    }
                     $media = '<span class="fa-stack fa-5x"><i class="fa fa-circle fa-stack-2x icon-background-default"></i> <i class="feature-icon fa '.esc_attr( $f['icon'] ).' fa-stack-1x"></i></span>';
                 }
 
@@ -60,7 +57,7 @@ if ( !$disable && !empty( $data ) ) {
                         <?php if ( $f['link'] )  { ?></a><?php } ?>
                     </div>
                     <h4><?php if ( $f['link'] ) { ?><a href="<?php echo esc_url( $f['link']  ); ?>"><?php } ?><?php echo esc_html( $f['title'] ); ?><?php if ( $f['link'] )  { ?></a><?php } ?></h4>
-                    <div><?php echo wp_kses_post( $f['desc'] ); ?></div>
+                    <div class="feature-item-content"><?php echo apply_filters( 'the_content', $f['desc'] ); ?></div>
                 </div>
             <?php
             }// end loop featues

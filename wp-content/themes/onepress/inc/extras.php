@@ -32,6 +32,10 @@ function onepress_body_classes( $classes ) {
         }
     }
 
+    if ( is_customize_preview() ) {
+        $classes[ ] = 'is-customize-preview';
+    }
+
 	return $classes;
 }
 add_filter( 'body_class', 'onepress_body_classes' );
@@ -80,45 +84,65 @@ if ( ! function_exists( 'onepress_get_media_url' ) ) {
     }
 }
 
-
 /**
- * Get theme actions required
+ *  Same hook for the_content
+ * @TODO: do not effect content by plugins
  *
- * @return array|mixed|void
+ * 8 WP_Embed:run_shortcode
+ * 8 WP_Embed:autoembed
+ * 10 wptexturize
+ * 10 wpautop
+ * 10 shortcode_unautop
+ * 10 prepend_attachment
+ * 10 wp_make_content_images_responsive
+ * 11 capital_P_dangit
+ * 11 do_shortcode
+ * 20 convert_smilies
  */
-function onepress_get_actions_required( ) {
+global $wp_embed;
+add_filter( 'onepress_the_content', array( $wp_embed, 'run_shortcode' ), 8 );
+add_filter( 'onepress_the_content', array( $wp_embed, 'autoembed' ), 8 );
+add_filter( 'onepress_the_content', 'wptexturize' );
+add_filter( 'onepress_the_content', 'wpautop' );
+add_filter( 'onepress_the_content', 'shortcode_unautop' );
+add_filter( 'onepress_the_content', 'prepend_attachment' );
+add_filter( 'onepress_the_content', 'wp_make_content_images_responsive' );
+add_filter( 'onepress_the_content', 'capital_P_dangit' );
+add_filter( 'onepress_the_content', 'do_shortcode' );
+add_filter( 'onepress_the_content', 'convert_smilies' );
 
-    $actions = array();
-    $front_page = get_option( 'page_on_front' );
-    $actions['page_on_front'] = 'dismiss';
-    $actions['page_template'] = 'dismiss';
-    if ( $front_page <= 0  ) {
-        $actions['page_on_front'] = 'active';
-        $actions['page_template'] = 'active';
-
-    } else {
-        if ( get_post_meta( $front_page, '_wp_page_template', true ) == 'template-frontpage.php' ) {
-            $actions['page_template'] = 'dismiss';
-        } else {
-            $actions['page_template'] = 'active';
-        }
-    }
-
-    $actions = apply_filters( 'onepress_get_actions_required', $actions );
-    $actions_dismiss =  get_option( 'onepress_actions_dismiss' );
-
-    if (  $actions_dismiss && is_array( $actions_dismiss ) ) {
-        foreach ( $actions_dismiss as $k => $v ) {
-            if ( isset ( $actions[ $k ] ) ) {
-                $actions[ $k ] = 'dismiss';
+if ( ! function_exists( 'onepress_get_layout' ) ) {
+    function onepress_get_layout( $default = 'right-sidebar' ) {
+        $layout = get_theme_mod( 'onepress_layout', $default );
+        if ( function_exists( 'is_woocommerce' ) ) {
+            if ( is_woocommerce() || is_cart() || is_checkout() || is_account_page() || is_wc_endpoint_url() ) {
+                $is_active_sidebar = is_active_sidebar( 'sidebar-shop' );
+                if ( ! $is_active_sidebar ) {
+                    $layout = 'no-sidebar';
+                }
             }
         }
+        return apply_filters( 'onepress_get_layout', $layout, $default );
+    }
+}
+
+
+
+
+/**
+ * Woocommerce Support
+ */
+if ( class_exists( 'WooCommerce' ) ) {
+    remove_action( 'woocommerce_cart_collaterals', 'woocommerce_cross_sell_display' );
+
+    add_filter( 'loop_shop_per_page', 'onepress_number_products_per_page', 20 );
+
+    function onepress_number_products_per_page( $number ) {
+        // $cols contains the current number of products per page based on the value stored on Options -> Reading
+        // Return the number of products you wanna show per page.
+        $number = 20;
+        return $number;
     }
 
-    return $actions;
 }
 
-add_action('switch_theme', 'onepress_reset_actions_required');
-function onepress_reset_actions_required () {
-    delete_option('onepress_actions_dismiss');
-}

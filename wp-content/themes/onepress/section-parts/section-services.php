@@ -14,9 +14,7 @@ if ( ! empty( $page_ids ) ) {
     ?>
     <?php if (!$onepress_service_disable) : ?>
         <?php if ( ! onepress_is_selective_refresh() ){ ?>
-        <section id="<?php if ($onepress_service_id != '') echo $onepress_service_id; ?>" <?php do_action('onepress_section_atts', 'services'); ?>
-                 class="<?php echo esc_attr(apply_filters('onepress_section_class', 'section-services section-padding section-meta onepage-section', 'services')); ?>">
-        <?php } ?>
+        <section id="<?php if ($onepress_service_id != '') echo $onepress_service_id; ?>" <?php do_action('onepress_section_atts', 'services'); ?> class="<?php echo esc_attr(apply_filters('onepress_section_class', 'section-services section-padding section-meta onepage-section', 'services')); ?>"><?php } ?>
             <?php do_action('onepress_section_before_inner', 'services'); ?>
             <div class="container">
                 <?php if ( $onepress_service_title ||  $onepress_service_subtitle || $desc ){ ?>
@@ -24,7 +22,7 @@ if ( ! empty( $page_ids ) ) {
                     <?php if ($onepress_service_subtitle != '') echo '<h5 class="section-subtitle">' . esc_html($onepress_service_subtitle) . '</h5>'; ?>
                     <?php if ($onepress_service_title != '') echo '<h2 class="section-title">' . esc_html($onepress_service_title) . '</h2>'; ?>
                     <?php if ( $desc ) {
-                        echo '<div class="section-desc">' . apply_filters( 'the_content', wp_kses_post( $desc ) ) . '</div>';
+                        echo '<div class="section-desc">' . apply_filters( 'onepress_the_content', wp_kses_post( $desc ) ) . '</div>';
                     } ?>
                 </div>
                 <?php } ?>
@@ -65,13 +63,18 @@ if ( ! empty( $page_ids ) ) {
                                 }
                             } else if ( $settings['icon'] ) {
                                 $settings['icon'] = trim( $settings['icon'] );
-                                if ($settings['icon'] != '' && strpos($settings['icon'], 'fa-') !== 0) {
+                                //Get/Set social icons
+                                if ( $settings['icon'] != '' && strpos($settings['icon'], 'fa') !== 0) {
                                     $settings['icon'] = 'fa-' . $settings['icon'];
                                 }
                                 $media = '<div class="service-image"><i class="fa '.esc_attr( $settings['icon'] ).' fa-5x"></i></div>';
                             }
+                            if ( $layout == 12 ) {
+                                $classes = 'col-sm-12 col-lg-'.$layout;
+                            } else {
+                                $classes = 'col-sm-6 col-lg-'.$layout;
+                            }
 
-                            $classes = 'col-sm-6 col-lg-'.$layout;
                             if ($j >= $columns) {
                                 $j = 1;
                                 $classes .= ' clearleft';

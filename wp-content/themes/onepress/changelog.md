@@ -1,6 +1,122 @@
 ====================================================================
 CHANGELOG
 ====================================================================
+## 1.4.1
+* Fix js error.
+
+## 1.4.0
+* Update JS, fix footer issue.
+
+## 1.3.9
+* Update Customizer style.
+* Update nav bar, hero background.
+* Update sanitize email.
+* Update parallax for tablet.
+* Fixed hero layout 2 issue.
+* Fixed WC login & register page layout.
+
+
+## 1.3.8
+* Update WooCommerce layout.
+
+## 1.3.7
+* Fix safari menu issue.
+* Improve editor customizer.
+* Run shortcode in hero content.
+* Improve parallax when small padding.
+* Update Bootstrap.
+* Clean up js fix conflict plugin.
+* HTML format for contact text.
+* Do not effect custom content by plugins, change `the_content` to `onepress_the_content`
+
+
+## 1.3.6
+* Improve parallax.
+* Fix WooCommerce issues.
+* Fix a bug load css.map files.
+
+
+## 1.3.5
+* Update responsive parallax.
+* Update menu toggle button.
+* Fix Header transparent.
+* Update menu items selection.
+
+## 1.3.4
+* Update parallax.
+* Fix issue sometime video lightbox not show.
+
+## 1.3.3
+* Fix translation function that is missing a text-domain
+* Correct the one text domain is being used.
+
+## 1.3.2
+* Fix js syntax.
+* Update parallax hero.
+
+## 1.3.1
+* Fix social icons.
+* Make contact form label full width.
+* Update images size for gallery masonry and justified.
+* New slider speed option, move hero settings to hero sections.
+* Update parallax version.
+* Add custom section padding in Customizer.
+* Change hero loading icon.
+* Remove Magnific-Popup, update lightbox video.
+
+## 1.3.0
+* WP 4.7 compatible.
+* Support WP 4.7 customizer shortcut.
+* Add icon picker.
+* Update WC layout template.
+* Migrate existing theme CSS to the core option added in WordPress 4.7.
+* Fix WooCommerce variations label color.
+* Add team member image alt text.
+* change copy setting notice message text.
+
+## 1.2.9
+* Improve recommend plugins.
+* Remove `TGM recommend plugins` file.
+* Add copy theme mod function.
+* Add option to select site layout.
+* Improve gallery and add view more button.
+
+## 1.2.8
+* Add sidebar for WooCommerce plugins.
+* Fix menu couldn't scroll if have too much sub menu items.
+* Improve header.
+
+## 1.2.7
+* Fix Mobile Menu button color option on header transparent.
+
+## 1.2.6
+* NEW Gallery section.
+* Fixed: Hero background image changes when edit in section order & styling.
+* Fixed: Hero loading on mobile when use video background.
+* Add version for assets files.
+* Add breadcrumb for template full width, left sidebar.
+* Disable disable animation hero text in Customizer.
+* Fix highlight/active latest menu item on large screen.
+* Improve parallax section.
+* Fix Hero slider overlay on mobile.
+* Support services 1 column.
+* Fix h1 site title tag close.
+* Move .break from reset to document.scss.
+* Update WPML config.
+* Update translate file.
+
+## 1.2.5
+* Update FontAwesome to latest version.
+* Remove logo 1.2.0 fallback.
+* Fix customizer issue.
+* Add filter the content for features items.
+* Update WPML config file.
+* Fix google font family issue.
+* Fix editor error when resize browser.
+* Speedup customizer.
+* Home logo click to scroll to top without reload page.
+* Add demo import content tab.
+
 ## 1.2.4
 * Fix issue can click to nav link.
 
